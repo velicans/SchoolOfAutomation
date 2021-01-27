@@ -17,6 +17,7 @@ public class ex3 {
     return an;
     }
     public static void main(String[] args){
+
         leapYear();
     }
 }
