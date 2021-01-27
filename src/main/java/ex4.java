@@ -3,9 +3,9 @@ import java.util.Locale;
 public class ex4 {
 
 
-   public static void lowerCase() {
+   public static void lowerCase(String[] List) {
 
-        String[] List = new String[]{"Welcome","TO","ThE","SchooL","oF","AUTOmation"};
+        //String[] List = new String[]{"Welcome","TO","ThE","SchooL","oF","AUTOmation"};
 
                 for (int i = 0; i < List.length; i++) {
 
@@ -16,7 +16,8 @@ public class ex4 {
         }
 
     public static void main(String[] args){
-        lowerCase();
+        String[] List = new String[]{"Welcome","TO","ThE","SchooL","oF","AUTOmation"};
+        lowerCase(List);
 
     }
 
