@@ -2,7 +2,7 @@ import java.util.Locale;
 
 public class ex4 {
 
-//regular for loop
+
    public static void lowerCase() {
 
         String[] List = new String[]{"Welcome","TO","ThE","SchooL","oF","AUTOmation"};
