@@ -2,9 +2,9 @@ import java.util.Arrays;
 public class ex2 {
 
 //regular for loop
-   static int sumOfList1() {
+   static int sumOfList1(int[] List) {
 
-        int[] List = new int[]{13, 17, 20};
+      //  int[] List = new int[]{13, 17, 20};
         int Sum = 0;
         for (int i = 0; i < List.length; i++) {
             Sum = Sum + List[i];
@@ -14,9 +14,9 @@ public class ex2 {
     }
 
     //for-each loop
-    static int sumOfList2(){
+    static int sumOfList2(int[] List){
 
-        int[] List = new int[]{13, 17, 20};
+        //int[] List = new int[]{13, 17, 20};
         int Sum = 0;
         for (int element : List){
             Sum = Sum + element;
@@ -26,8 +26,8 @@ public class ex2 {
     }
 
     //while loop
-    static int sumOfList3(){
-        int[] List = new int[]{13, 17, 20};
+    static int sumOfList3(int[] List){
+        //int[] List = new int[]{13, 17, 20};
         int Sum = 0;
         int i=0;
         while (i<List.length){
@@ -39,9 +39,10 @@ public class ex2 {
     }
 
     public static void main(String[] args){
-        sumOfList1();
-        sumOfList2();
-        sumOfList3();
+        int[] List = new int[]{13, 17, 20};
+        sumOfList1(List);
+        sumOfList2(List);
+        sumOfList3(List);
 
 
     }
