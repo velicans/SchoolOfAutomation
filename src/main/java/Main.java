@@ -14,6 +14,14 @@ public class Main {
         doEx5();
     }
 
+    /**
+     * 1. Given n, a natural number, implement a method that for
+     * each number from 1 to n will return:
+     * • 3M if the number is divided by 3
+     * • 5M if the number is divided by 5
+     * • the number if the number is not divided by 3 or by 5
+     * • 3M5M if the number is divide with both 3 and 5
+     */
     public static void doEx1() {
 
         int i;
@@ -30,9 +38,14 @@ public class Main {
         System.out.println();
     }
 
+    /**
+     * 2. Write three functions that compute the sum of the
+     * numbers in a list: using a for-loop, a for-each-loop
+     * and a while-loop
+     */
     public static void doEx2() {
 
-        List<Integer> listOfNumbers = Arrays.asList(1,2,5,4,8,2,3);
+        List<Integer> listOfNumbers = Arrays.asList(1, 2, 5, 4, 8, 2, 3);
 
         System.out.println("Sum with for-loop: " + sumWithFor(listOfNumbers));
         System.out.println("Sum with for-each-loop: " + sumWithForEach(listOfNumbers));
@@ -40,7 +53,10 @@ public class Main {
         System.out.println();
     }
 
-    public  static void doEx3() {
+    /**
+     * 3. Write a method that prints the next 20 leap years.
+     */
+    public static void doEx3() {
 
         int myYear = 2021;
 
@@ -49,6 +65,9 @@ public class Main {
         System.out.println();
     }
 
+    /**
+     * 4. Write a method that iterates through a list of Strings and makes them lowercase
+     */
     public static void doEx4() {
 
         List<String> listOfStrings = Arrays.asList("School", "OF", "AutoMATION", "ENDaVA");
@@ -60,6 +79,10 @@ public class Main {
 
     }
 
+    /**
+     * 5. Write a method that iterates through an array or list of numbers and replaces the current number with
+     * it’s double.
+     */
     public static void doEx5() {
 
         int i;
@@ -76,13 +99,15 @@ public class Main {
         System.out.println();
     }
 
-    /*
-     * Input: n, a natural number;
-     * The method will return for each number from 1 to n:
-     *      3M if the number is divided by 3
-     *      5M if the number is divided by 5
-     *      the number if the number is not divided by 3 or by 5
-     *      3M5M if the number is divide with both 3 and 5
+    /**
+     * for each number from 1 to n:
+     * *      3M if the number is divided by 3
+     * *      5M if the number is divided by 5
+     * *      the number if the number is not divided by 3 or by 5
+     * *      3M5M if the number is divide with both 3 and 5
+     *
+     * @param n a natural number;
+     * @return List of pairs
      */
     private static ArrayList<Pair> checkDiv3or5(int n) {
 
@@ -107,9 +132,9 @@ public class Main {
         return listOfPairs;
     }
 
-    /*
-     * Input: List of numbers
-     * Sum of numbers using a for loop
+    /**
+     * @param listOfNumbers a list of numbers
+     * @return the sum of numbers using a for loop
      */
     private static int sumWithFor(List<Integer> listOfNumbers) {
 
@@ -122,9 +147,9 @@ public class Main {
         return sum;
     }
 
-    /*
-     * Input: List of numbers
-     * Sum of numbers using a for-each-loop
+    /**
+     * @param listOfNumbers a list of numbers
+     * @return the sum of numbers using a for-each-loop
      */
     private static int sumWithForEach(List<Integer> listOfNumbers) {
 
@@ -136,9 +161,9 @@ public class Main {
         return sum;
     }
 
-    /*
-     * Input: List of numbers
-     * Sum of numbers using a while loop
+    /**
+     * @param listOfNumbers a list of numbers
+     * @return the sum of numbers using a while loop
      */
     private static int sumWithWhile(List<Integer> listOfNumbers) {
 
@@ -152,9 +177,10 @@ public class Main {
         return sum;
     }
 
-    /*
-     * Input: year
-     * Show the next 20 leap years
+    /**
+     * Print the next 20 leap years
+     *
+     * @param year the initial year
      */
     private static void next20LeapYears(int year) {
 
@@ -165,31 +191,29 @@ public class Main {
             if (year % 4 == 0 && (year % 100 != 0 || year % 400 == 0)) {
                 System.out.print(year + " ");
                 count++;
-                year +=4;
+                year += 4;
             } else
                 year++;
         }
         System.out.println();
     }
 
-    /*
-     * Input: List of Strings
-     * Make the Strings lowercase
+    /**
+     * @param listOfStrings a list of Strings
+     * @return the initial list with all the Strings lowercase
      */
     private static List<String> lowercaseStrings(List<String> listOfStrings) {
 
-        return listOfStrings.stream().map(String::toLowerCase)
-                                    .collect(Collectors.toList());
+        return listOfStrings.stream().map(String::toLowerCase).collect(Collectors.toList());
 
     }
 
-    /*
-     * Input: Array or list of numbers;
-     * Replaces the current number with it’s double.
+    /**
+     * @param myNumbers an array of numbers;
+     * @return the initial array with the values doubled
      */
     private static double[] doubleValues(double[] myNumbers) {
 
-        return Arrays.stream(myNumbers).map(x -> x * 2)
-                    .toArray();
+        return Arrays.stream(myNumbers).map(x -> x * 2).toArray();
     }
 }
