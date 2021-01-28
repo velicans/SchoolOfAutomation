@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Main {
 
@@ -17,17 +18,27 @@ public class Main {
                     listOfPairs.get(i).getMyValue());
 
         }
+        System.out.println();
 
         // Ex. 2
         List<Integer> listOfNumbers = Arrays.asList(1,2,5,4,8,2,3);
         System.out.println("Sum with for-loop: " + sumWithFor(listOfNumbers));
         System.out.println("Sum with for-each-loop: " + sumWithForEach(listOfNumbers));
         System.out.println("Sum with while-loop: " + sumWithWhile(listOfNumbers));
+        System.out.println();
 
         // Ex. 3
         int myYear = 2021;
         System.out.print("The next 20 leap years: ");
         next20LeapYears(myYear);
+        System.out.println();
+
+        // Ex. 4
+        List<String> listOfStrings = Arrays.asList("School", "OF", "AutoMATION", "ENDaVA");
+        System.out.println("Initial: " + listOfStrings);
+        listOfStrings = lowercaseStrings(listOfStrings);
+        System.out.println("Final:   " + listOfStrings);
+        System.out.println();
     }
 
 
@@ -121,5 +132,15 @@ public class Main {
                 year++;
         }
         System.out.println();
+    }
+
+    /*
+     * Make the Strings in a list lowercase
+     */
+    public static List<String> lowercaseStrings(List<String> listOfStrings) {
+
+        return listOfStrings.stream().map(String::toLowerCase)
+                                    .collect(Collectors.toList());
+
     }
 }
