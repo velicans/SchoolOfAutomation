@@ -23,6 +23,11 @@ public class Main {
         System.out.println("Sum with for-loop: " + sumWithFor(listOfNumbers));
         System.out.println("Sum with for-each-loop: " + sumWithForEach(listOfNumbers));
         System.out.println("Sum with while-loop: " + sumWithWhile(listOfNumbers));
+
+        // Ex. 3
+        int myYear = 2021;
+        System.out.print("The next 20 leap years: ");
+        next20LeapYears(myYear);
     }
 
 
@@ -97,5 +102,24 @@ public class Main {
             i--;
         }
         return sum;
+    }
+
+    /*
+     * Show the next 20 leap years
+     */
+    public static void next20LeapYears(int year) {
+
+        int count = 0;
+
+        while (count != 20) {
+
+            if (year % 4 == 0 && (year % 100 != 0 || year % 400 == 0)) {
+                System.out.print(year + " ");
+                count++;
+                year +=4;
+            } else
+                year++;
+        }
+        System.out.println();
     }
 }
