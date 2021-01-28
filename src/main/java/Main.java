@@ -39,6 +39,18 @@ public class Main {
         listOfStrings = lowercaseStrings(listOfStrings);
         System.out.println("Final:   " + listOfStrings);
         System.out.println();
+
+        // Ex. 5
+        double[] myNumbers = new double[]{2, 4, 1, 8, 6, 3.3, 0.7};
+        System.out.print("Initial: ");
+        for (i = 0; i < myNumbers.length; i++)
+            System.out.print(myNumbers[i] + "   ");
+        System.out.println();
+        myNumbers = doubleValues(myNumbers);
+        System.out.print("Final:   ");
+        for (i = 0; i < myNumbers.length; i++)
+            System.out.print(myNumbers[i] + "   ");
+        System.out.println();
     }
 
 
@@ -142,5 +154,15 @@ public class Main {
         return listOfStrings.stream().map(String::toLowerCase)
                                     .collect(Collectors.toList());
 
+    }
+
+    /*
+     * Input: Array or list of numbers;
+     * Replaces the current number with it’s double.
+     */
+    public static double[] doubleValues(double[] myNumbers) {
+
+        return Arrays.stream(myNumbers).map(x -> x * 2)
+                    .toArray();
     }
 }
