@@ -20,7 +20,6 @@ public class Ex3 {
             } else {
                 year++;
             }
-
         }
         return listLeapYears;
     }
