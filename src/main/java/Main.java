@@ -1,9 +1,11 @@
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class Main {
 
     public static void main(String[] args) {
-        System.out.println("Hello world!");
+
         // Ex. 1
         int i;
         int n = 17;
@@ -15,6 +17,12 @@ public class Main {
                     listOfPairs.get(i).getMyValue());
 
         }
+
+        // Ex. 2
+        List<Integer> listOfNumbers = Arrays.asList(1,2,5,4,8,2,3);
+        System.out.println("Sum with for-loop: " + sumWithFor(listOfNumbers));
+        System.out.println("Sum with for-each-loop: " + sumWithForEach(listOfNumbers));
+        System.out.println("Sum with while-loop: " + sumWithWhile(listOfNumbers));
     }
 
 
@@ -47,5 +55,47 @@ public class Main {
             }
         }
         return listOfPairs;
+    }
+
+    /*
+     * Sum of numbers using a for loop
+     */
+    public static int sumWithFor(List<Integer> listOfNumbers) {
+
+        int i;
+        int sum = 0;
+
+        for (i = 0; i < listOfNumbers.size(); i++) {
+            sum += listOfNumbers.get(i);
+        }
+        return sum;
+    }
+
+    /*
+     * Sum of numbers using a for-each-loop
+     */
+    public static int sumWithForEach(List<Integer> listOfNumbers) {
+
+        int sum = 0;
+
+        for (int nr : listOfNumbers) {
+            sum += nr;
+        }
+        return sum;
+    }
+
+    /*
+     * Sum of numbers using a while loop
+     */
+    public static int sumWithWhile(List<Integer> listOfNumbers) {
+
+        int i = listOfNumbers.size() - 1;
+        int sum = 0;
+
+        while (i >= 0) {
+            sum += listOfNumbers.get(i);
+            i--;
+        }
+        return sum;
     }
 }
