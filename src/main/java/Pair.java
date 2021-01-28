@@ -2,11 +2,6 @@ public class Pair {
 
     private int myNumber;
     private String myValue;
-/*
-    public Pair() {
-        this.myNumber = 0;
-        this.myValue = "";
-    }*/
 
     public Pair(int myNumber, String myValue) {
         this.myNumber = myNumber;
