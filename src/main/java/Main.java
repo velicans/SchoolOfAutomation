@@ -7,9 +7,18 @@ public class Main {
 
     public static void main(String[] args) {
 
-        // Ex. 1
+        doEx1();
+        doEx2();
+        doEx3();
+        doEx4();
+        doEx5();
+    }
+
+    public static void doEx1() {
+
         int i;
         int n = 17;
+
         ArrayList<Pair> listOfPairs;
         listOfPairs = checkDiv3or5(n);
 
@@ -19,29 +28,43 @@ public class Main {
 
         }
         System.out.println();
+    }
 
-        // Ex. 2
+    public static void doEx2() {
+
         List<Integer> listOfNumbers = Arrays.asList(1,2,5,4,8,2,3);
+
         System.out.println("Sum with for-loop: " + sumWithFor(listOfNumbers));
         System.out.println("Sum with for-each-loop: " + sumWithForEach(listOfNumbers));
         System.out.println("Sum with while-loop: " + sumWithWhile(listOfNumbers));
         System.out.println();
+    }
 
-        // Ex. 3
+    public  static void doEx3() {
+
         int myYear = 2021;
+
         System.out.print("The next 20 leap years: ");
         next20LeapYears(myYear);
         System.out.println();
+    }
 
-        // Ex. 4
+    public static void doEx4() {
+
         List<String> listOfStrings = Arrays.asList("School", "OF", "AutoMATION", "ENDaVA");
+
         System.out.println("Initial: " + listOfStrings);
         listOfStrings = lowercaseStrings(listOfStrings);
         System.out.println("Final:   " + listOfStrings);
         System.out.println();
 
-        // Ex. 5
-        double[] myNumbers = new double[]{2, 4, 1, 8, 6, 3.3, 0.7};
+    }
+
+    public static void doEx5() {
+
+        int i;
+        double[] myNumbers = new double[]{2, 4, 1, 8, 6, 3.3, 0.7, -5.6};
+
         System.out.print("Initial: ");
         for (i = 0; i < myNumbers.length; i++)
             System.out.print(myNumbers[i] + "   ");
@@ -53,16 +76,15 @@ public class Main {
         System.out.println();
     }
 
-
     /*
-     * Given n, a natural number, the method will return for each number
-     * from 1 to n:
+     * Input: n, a natural number;
+     * The method will return for each number from 1 to n:
      *      3M if the number is divided by 3
      *      5M if the number is divided by 5
      *      the number if the number is not divided by 3 or by 5
      *      3M5M if the number is divide with both 3 and 5
      */
-    public static ArrayList<Pair> checkDiv3or5(int n) {
+    private static ArrayList<Pair> checkDiv3or5(int n) {
 
         int i;
         ArrayList<Pair> listOfPairs = new ArrayList<>(n);
@@ -86,9 +108,10 @@ public class Main {
     }
 
     /*
+     * Input: List of numbers
      * Sum of numbers using a for loop
      */
-    public static int sumWithFor(List<Integer> listOfNumbers) {
+    private static int sumWithFor(List<Integer> listOfNumbers) {
 
         int i;
         int sum = 0;
@@ -100,9 +123,10 @@ public class Main {
     }
 
     /*
+     * Input: List of numbers
      * Sum of numbers using a for-each-loop
      */
-    public static int sumWithForEach(List<Integer> listOfNumbers) {
+    private static int sumWithForEach(List<Integer> listOfNumbers) {
 
         int sum = 0;
 
@@ -113,9 +137,10 @@ public class Main {
     }
 
     /*
+     * Input: List of numbers
      * Sum of numbers using a while loop
      */
-    public static int sumWithWhile(List<Integer> listOfNumbers) {
+    private static int sumWithWhile(List<Integer> listOfNumbers) {
 
         int i = listOfNumbers.size() - 1;
         int sum = 0;
@@ -128,9 +153,10 @@ public class Main {
     }
 
     /*
+     * Input: year
      * Show the next 20 leap years
      */
-    public static void next20LeapYears(int year) {
+    private static void next20LeapYears(int year) {
 
         int count = 0;
 
@@ -147,9 +173,10 @@ public class Main {
     }
 
     /*
-     * Make the Strings in a list lowercase
+     * Input: List of Strings
+     * Make the Strings lowercase
      */
-    public static List<String> lowercaseStrings(List<String> listOfStrings) {
+    private static List<String> lowercaseStrings(List<String> listOfStrings) {
 
         return listOfStrings.stream().map(String::toLowerCase)
                                     .collect(Collectors.toList());
@@ -160,7 +187,7 @@ public class Main {
      * Input: Array or list of numbers;
      * Replaces the current number with it’s double.
      */
-    public static double[] doubleValues(double[] myNumbers) {
+    private static double[] doubleValues(double[] myNumbers) {
 
         return Arrays.stream(myNumbers).map(x -> x * 2)
                     .toArray();
