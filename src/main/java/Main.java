@@ -4,15 +4,15 @@ import java.util.Scanner;
 public class Main {
 
     public static void main(String[] args) {
-        System.out.println("Exercise 1: \n");
+        System.out.println("Exercise 1: ");
         ex1();
-        System.out.println("Exercise 2: \n");
+        System.out.println("Exercise 2: ");
         ex2();
-        System.out.println("Exercise 3: \n");
+        System.out.println("Exercise 3: ");
         ex3();
-        System.out.println("Exercise 4: \n");
+        System.out.println("Exercise 4: ");
         ex4();
-        System.out.println("Exercise 5: \n");
+        System.out.println("Exercise 5: ");
         ex5();
     }
 
