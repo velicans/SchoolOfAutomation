@@ -2,10 +2,10 @@ package Day3Exercises;
 
 public class Pinidae extends  Plant {
 
-    public int numberOfSpecies = 50;
+    private final int numberOfSpecies = 50;
 
-    public void setNumberOfSpecies(int numberOfSpecies) {
-        this.numberOfSpecies = numberOfSpecies;
+    public Pinidae(int oxygenProduction) {
+        super(oxygenProduction);
     }
 
     public int getNumberOfSpecies() {

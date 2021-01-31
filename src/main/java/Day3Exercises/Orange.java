@@ -5,13 +5,10 @@ public class Orange extends Plant implements Fructiferous, Eatable {
     private int age;
     private int height;
 
-    public Orange() {
-    }
-
     public Orange(int age, int height, int oxygenProduction) {
+        super(oxygenProduction);
         this.age = age;
         this.height = height;
-        setOxygenProduction(oxygenProduction);
     }
 
     public void setHeight(int height) {

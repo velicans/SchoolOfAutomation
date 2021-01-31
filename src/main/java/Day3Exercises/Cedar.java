@@ -5,7 +5,12 @@ public class Cedar extends Pinidae implements Eatable {
     private final int numberOfSpecies = 10;
 
     public Cedar(int oxygenProduction) {
-        setOxygenProduction(oxygenProduction);
+        super(oxygenProduction);
+    }
+
+    @Override
+    public int getNumberOfSpecies() {
+        return numberOfSpecies;
     }
 
     public String getGrowthEnvironment() {

@@ -27,9 +27,14 @@ public class Main {
         System.out.println("__________Day3 Exercises__________");
 
         Orange orangeTree = new Orange(10, 5, 50);
-        System.out.println(orangeTree.toString());
+        System.out.println(orangeTree.toString() + "\n");
 
         Pinidae cedarTree = new Cedar(200);
         System.out.println(cedarTree.toString());
+        System.out.println("Number of species:  " + cedarTree.getNumberOfSpecies());
+        System.out.println("Growth Environment: " + cedarTree.getGrowthEnvironment() + "\n");
+
+        Plant rose = new Rose("red", "Louis Philippe Rose" ,10);
+        System.out.println(rose.toString());
     }
 }
