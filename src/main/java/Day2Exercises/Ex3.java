@@ -1,3 +1,7 @@
+package Day2Exercises;
+
+import java.util.Calendar;
+
 public class Ex3 {
 
     /**
@@ -5,7 +9,7 @@ public class Ex3 {
      */
     public static void doEx3() {
 
-        int myYear = 2021;
+        int myYear = Calendar.getInstance().get(Calendar.YEAR);
 
         System.out.print("The next 20 leap years: ");
         next20LeapYears(myYear);

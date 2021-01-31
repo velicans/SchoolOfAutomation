@@ -1,3 +1,5 @@
+package Day2Exercises;
+
 import java.util.ArrayList;
 
 public class Ex1 {

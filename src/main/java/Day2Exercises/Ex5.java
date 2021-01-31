@@ -1,3 +1,5 @@
+package Day2Exercises;
+
 import java.util.Arrays;
 
 public class Ex5 {

@@ -1,3 +1,5 @@
+package Day2Exercises;
+
 public class Pair {
 
     private int myNumber;
