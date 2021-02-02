@@ -1,28 +1,30 @@
+package OOP;
+
 import Abstract.Dog;
 
 public class OOPConcepts {
 
     public static void main(String[] args){
 
-        /*Animal caine = new Dog("Rex");
+        /*OOP.Animal caine = new OOP.Dog("Rex");
         caine.makeSound();
         caine.makeSound2();
 
-        Animal pisica = new Cat("Karma");
+        OOP.Animal pisica = new OOP.Cat("Karma");
         pisica.makeSound();
         caine.makeSound2();
 
-        Animal animal = new Animal();
+        OOP.Animal animal = new OOP.Animal();
         animal.makeSound();
 
-        Animal animal2 = new Animal("rex");
+        OOP.Animal animal2 = new OOP.Animal("rex");
         animal.makeSound2();
 
-        Cat cat = new Cat("Karma");
+        OOP.Cat cat = new OOP.Cat("Karma");
         cat.makeSound();
         cat.makeSound("Another Sound");
 
-        Dog caine = new Dog();
+        OOP.Dog caine = new OOP.Dog();
         caine.makeSound();*/
 
         Abstract.AnimalInterface pisica = new Abstract.Cat();
