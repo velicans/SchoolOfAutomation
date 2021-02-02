@@ -17,6 +17,9 @@ public class Main {
                 + " Oxygen production : " + p.oxygenProduction
                 + " Growth environment : " + p.getGrowthEnvironment());
 
+        Rose r = new Rose(40);
+        System.out.println("Rose oxygen : "+r.oxygenProduction
+        +" Eatable : "+r.isEatable());
 
     }
 }
