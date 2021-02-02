@@ -17,5 +17,14 @@ public class Main {
                 + ", eatable : " + orange1.isEatable()
                 + ", harvest : " + orange1.getTimeToHarvest()
                 + ", oxygen : " + orange1.getOxygenProduction());
+
+        Rose r = new Rose(50,2,10,"Red");
+        System.out.println("Rose age : " + r.getAge()
+                + ", height : " + r.getHeight()
+                + ", eatable : " + r.isEatable()
+                + ", harvest : " + r.getTimeToHarvest()
+                + ", oxygen : " + r.getOxygenProduction());
+
+
     }
 }
