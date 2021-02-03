@@ -8,13 +8,13 @@
 	  "product_name": "sildenafil",
 	  "supplier": "Wisozk",
 	  "quantity": 150,
-	  "unit_cost": "$50.47",
+	  "unit_cost": "$50.47"
 	},
 	{
 	  "product_name": "sildenafil2",
 	  "supplier": "Wisozk2",
 	  "quantity": 120,
-	  "unit_cost": "$20.47",
+	  "unit_cost": "$20.47"
 	}
   ]
 }
