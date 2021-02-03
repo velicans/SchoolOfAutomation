@@ -1,14 +1,20 @@
+import Day2Exercises.*;
 import Day3Exercises.*;
+import Day4Exercises.*;
+import org.json.JSONObject;
 
 public class Main {
 
     public static void main(String[] args) {
 
-        // Day2 Exercises;
+        // Day2 Exercises
         doDay2Exercises();
 
-        // Day3 Exercises;
+        // Day3 Exercises
         doDay3Exercises();
+
+        // Day4 Exercises
+        doDay4Exercises();
     }
 
     /**
@@ -24,14 +30,14 @@ public class Main {
      * 5. Write a method that iterates through an array or list of numbers and replaces the current number with it’s
      * double.
      */
-    public static void doDay2Exercises() {
+    private static void doDay2Exercises() {
 
         System.out.println("__________Day2 Exercises__________");
-        Day2Exercises.Ex1.doEx1();
-        Day2Exercises.Ex2.doEx2();
-        Day2Exercises.Ex3.doEx3();
-        Day2Exercises.Ex4.doEx4();
-        Day2Exercises.Ex5.doEx5();
+        Ex1.doEx1();
+        Ex2.doEx2();
+        Ex3.doEx3();
+        Ex4.doEx4();
+        Ex5.doEx5();
         System.out.println();
     }
 
@@ -51,7 +57,7 @@ public class Main {
      * eatable. Print the field number of species and the result of the getGrowthEnvironment method.
      * i) Implement a way to create a Rose object
      */
-    public static void doDay3Exercises() {
+    private static void doDay3Exercises() {
 
         System.out.println("__________Day3 Exercises__________");
 
@@ -65,5 +71,28 @@ public class Main {
 
         Plant rose = new Rose("red", "Louis Philippe Rose", 10);
         System.out.println(rose.toString());
+        System.out.println();
+    }
+
+    /**
+     * Write a method for handling .json files;
+     * 1. simple json file
+     * 2. json file with list of jsons
+     */
+    private static void doDay4Exercises() {
+
+        System.out.println("__________Day4 Exercises__________");
+
+        JSONObject mySimpleJson = FileHandling.jsonReaderIO("JsonExample");
+        if (mySimpleJson != null) {
+            FileHandling.printJsonObject(mySimpleJson);
+        }
+
+        System.out.println();
+
+        JSONObject myJson = FileHandling.jsonReaderIO("JsonWithListOfJsons");
+        if (myJson != null) {
+            FileHandling.printJsonObject(myJson);
+        }
     }
 }
