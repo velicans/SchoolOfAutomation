@@ -21,5 +21,7 @@ public class Main {
         System.out.println("Rose oxygen : "+r.oxygenProduction
         +" Eatable : "+r.isEatable());
 
+        System.out.println(o);
+
     }
 }

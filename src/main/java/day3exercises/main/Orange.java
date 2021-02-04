@@ -28,4 +28,10 @@ public class Orange extends Plant implements Fructiferous, Eatable {
     public boolean isEatable() {
         return eatable;
     }
+
+
+    @Override
+    public boolean equals(Object obj) {
+        return super.equals(obj);
+    }
 }

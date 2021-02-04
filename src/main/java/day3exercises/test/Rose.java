@@ -1,5 +1,7 @@
 package day3exercises.test;
 
+import netscape.javascript.JSObject;
+
 public class Rose extends Plant {
     Rose(int oxygen) {
         super(oxygen);
@@ -47,4 +49,6 @@ public class Rose extends Plant {
     public void setHeight(int height) {
         this.height = height;
     }
+
+    
 }
