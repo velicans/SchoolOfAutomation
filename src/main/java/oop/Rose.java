@@ -1,32 +1,31 @@
 package oop;
 
-public class Orange extends Plant implements Fructiferous, Eatable{
-    private double oxygenProduction;
+public class Rose extends Plant implements Eatable, Fructiferous{
     private String color;
     private double age;
     private double height;
 
-    public Orange(double oxygenProduction, String color, double age, double height) {
-        this.oxygenProduction = oxygenProduction;
+    public Rose(double oxygenProduction, String color, double age, double height) {
+        super(oxygenProduction);
         this.color = color;
         this.age = age;
         this.height = height;
     }
 
     public String getTimeToHarvest() {
-        return "August";
-    }
-
-    public boolean isEatable() {
-        return true;
+        return "May";
     }
 
     @Override
     public String toString() {
-        return "Orange: " +
+        return "Rose: " +
                 "oxygenProduction: " + oxygenProduction +
                 ", color: " + color +
                 ", age: " + age +
                 ", height: " + height;
+    }
+
+    public boolean isEatable() {
+        return false;
     }
 }
