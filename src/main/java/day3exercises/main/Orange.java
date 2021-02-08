@@ -2,6 +2,8 @@ package day3exercises.main;
 
 public class Orange extends Plant implements Fructiferous, Eatable {
     int age;
+
+
     int height;
     boolean eatable;
     String harvest;
@@ -33,5 +35,13 @@ public class Orange extends Plant implements Fructiferous, Eatable {
     @Override
     public boolean equals(Object obj) {
         return super.equals(obj);
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public int getHeight() {
+        return height;
     }
 }

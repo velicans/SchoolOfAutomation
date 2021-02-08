@@ -1,5 +1,7 @@
 package day3exercises.main;
 
+
+
 public class Cedar extends Pinidae implements Eatable {
 
 
@@ -17,4 +19,6 @@ public class Cedar extends Pinidae implements Eatable {
     public boolean isEatable() {
         return false;
     }
+
+
 }
