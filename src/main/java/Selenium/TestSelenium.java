@@ -37,14 +37,14 @@ public class TestSelenium {
         // driver.findElement(By.cssSelector("button.animated-button")).click();
         // driver.findElement(By.linkText("Add grapes")).click();
 
-        driver.findElement(By.id("name")).sendKeys("sorin3");
+        driver.findElement(By.id("name")).sendKeys("Denisa Pîntea");
 
         // driver.findElement(By.xpath("//label[contains(text(),'Quantity:')]"))
         Select select = new Select(driver.findElement(By.xpath("//select[@id='quantity']")));
-        select.selectByVisibleText("24");
+        select.selectByVisibleText("36");
 
-        driver.findElement(By.id("age")).sendKeys("99");
-        driver.findElement(By.id("ripeness")).sendKeys("99");
+        driver.findElement(By.id("age")).sendKeys("50");
+        driver.findElement(By.id("ripeness")).sendKeys("91");
 
         driver.findElement(By.cssSelector("input[type='submit']")).click();
 
