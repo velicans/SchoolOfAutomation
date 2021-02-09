@@ -7,14 +7,18 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.util.List;
+
 public class TestSelenium {
 
+    public static final String GRAPE_NAME = "sorin7";
     private static WebDriver driver;
 
     @BeforeAll
@@ -37,7 +41,7 @@ public class TestSelenium {
         // driver.findElement(By.cssSelector("button.animated-button")).click();
         // driver.findElement(By.linkText("Add grapes")).click();
 
-        driver.findElement(By.id("name")).sendKeys("sorin3");
+        driver.findElement(By.id("name")).sendKeys(GRAPE_NAME);
 
         // driver.findElement(By.xpath("//label[contains(text(),'Quantity:')]"))
         Select select = new Select(driver.findElement(By.xpath("//select[@id='quantity']")));
@@ -48,6 +52,22 @@ public class TestSelenium {
 
         driver.findElement(By.cssSelector("input[type='submit']")).click();
 
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("table.App-table tbody")));
+
+        WebElement table = driver.findElement(By.cssSelector("table.App-table tbody"));
+
+        List<WebElement> rows = table.findElements(By.tagName("tr"));
+
+        for (WebElement row : rows) {
+            List<WebElement> td = row.findElements(By.tagName("td"));
+
+            if(td.get(0).getText().equals(GRAPE_NAME)) {
+                td.get(4).findElement(By.tagName("button")).click();
+                break;
+            }
+        }
+
+
 
         try {
             Thread.sleep(3000);
@@ -55,7 +75,6 @@ public class TestSelenium {
             e.printStackTrace();
         }
 
-        driver.quit();
 
     }
 
