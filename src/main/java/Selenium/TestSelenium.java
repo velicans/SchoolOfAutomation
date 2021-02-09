@@ -2,9 +2,7 @@ package Selenium;
 
 
 import io.github.bonigarcia.wdm.WebDriverManager;
-import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -18,8 +16,16 @@ import java.util.List;
 
 public class TestSelenium {
 
-    public static final String GRAPE_NAME = "sorin7";
+    public static final String GRAPE_NAME = "Denisa Pîntea 5";
     private static WebDriver driver;
+    private boolean successAddGrapes = false;
+    private boolean successFerment = false;
+    /*
+        wineComposition = 1 -> wine composition = $GRAPE_NAME
+        wineComposition = 2 -> wine composition = sauvignon blanc, $GRAPE_NAME
+        wineComposition = 3 -> wine composition = sauvignon blanc, godello, $GRAPE_NAME
+     */
+    private final int wineComposition = 3;
 
     @BeforeAll
     public static void before() {
@@ -37,21 +43,21 @@ public class TestSelenium {
         WebDriverWait wait = new WebDriverWait(driver, 5);
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[contains(text(),'Add grapes')]")));
 
+        // add grapes
         driver.findElement(By.xpath("//button[contains(text(),'Add grapes')]")).click();
-        // driver.findElement(By.cssSelector("button.animated-button")).click();
-        // driver.findElement(By.linkText("Add grapes")).click();
 
+        // Cand sa folosim clear()?
         driver.findElement(By.id("name")).sendKeys(GRAPE_NAME);
 
-        // driver.findElement(By.xpath("//label[contains(text(),'Quantity:')]"))
         Select select = new Select(driver.findElement(By.xpath("//select[@id='quantity']")));
         select.selectByVisibleText("24");
 
-        driver.findElement(By.id("age")).sendKeys("99");
-        driver.findElement(By.id("ripeness")).sendKeys("99");
+        driver.findElement(By.id("age")).sendKeys("44");
+        driver.findElement(By.id("ripeness")).sendKeys("93");
 
         driver.findElement(By.cssSelector("input[type='submit']")).click();
 
+        // /grapes
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("table.App-table tbody")));
 
         WebElement table = driver.findElement(By.cssSelector("table.App-table tbody"));
@@ -61,20 +67,70 @@ public class TestSelenium {
         for (WebElement row : rows) {
             List<WebElement> td = row.findElements(By.tagName("td"));
 
-            if(td.get(0).getText().equals(GRAPE_NAME)) {
+            if (td.get(0).getText().equals(GRAPE_NAME)) {
+                successAddGrapes = true;
                 td.get(4).findElement(By.tagName("button")).click();
                 break;
             }
         }
+        Assertions.assertTrue(successAddGrapes, "Something went wrong - " + GRAPE_NAME + " grape not found");
 
+        // /must
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//h3[contains(text(),'Must:')]")));
 
+        table = driver.findElement(By.cssSelector("table.App-table tbody"));
+        rows = table.findElements(By.tagName("tr"));
+
+        String composition = "";
+        for (WebElement row : rows) {
+            List<WebElement> td = row.findElements(By.tagName("td"));
+
+            if ((wineComposition == 2 || wineComposition == 3) && td.get(1).getText().equals("sauvignon blanc")) {
+                td.get(0).findElement(By.tagName("input")).click();
+                Assertions.assertTrue(td.get(0).findElement(By.tagName("input")).isSelected(),
+                        "The checkbox for 'sauvignon blanc' is not selected");
+                composition.concat("sauvignon blanc, ");
+            }
+            if (wineComposition == 3 && td.get(1).getText().equals("godello")) {
+                td.get(0).findElement(By.tagName("input")).click();
+                Assertions.assertTrue(td.get(0).findElement(By.tagName("input")).isSelected(),
+                        "The checkbox for 'godello' is not selected");
+                composition.concat("godello, ");
+            }
+
+            if (td.get(1).getText().equals(GRAPE_NAME)) {
+                td.get(0).findElement(By.tagName("input")).click();
+                Assertions.assertTrue(td.get(0).findElement(By.tagName("input")).isSelected(),
+                        "The checkbox for " + GRAPE_NAME + " is not selected");
+                composition.concat(GRAPE_NAME);
+                break;
+            }
+        }
+        driver.findElement(By.tagName("button")).click();
+
+        // /wines
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By
+                .xpath("//h3[contains(text(),'Wine cellar contents:')]")));
+
+        table = driver.findElement(By.cssSelector("table.App-table tbody"));
+        rows = table.findElements(By.tagName("tr"));
+
+        for (WebElement row : rows) {
+            List<WebElement> td = row.findElements(By.tagName("td"));
+
+            if (td.get(0).getText().equals(GRAPE_NAME)) {
+                successFerment = true;
+                break;
+            }
+        }
+        Assertions.assertTrue(successFerment,
+                "Something went wrong - There is no wine with this composition: " + composition);
 
         try {
             Thread.sleep(3000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-
 
     }
 
