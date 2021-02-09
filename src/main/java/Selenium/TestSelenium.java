@@ -12,20 +12,21 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.util.Arrays;
+import java.util.LinkedList;
 import java.util.List;
 
 public class TestSelenium {
 
-    public static final String GRAPE_NAME = "Denisa Pîntea 5";
+    public static final String GRAPE_NAME = "Denisa Pîntea 11";
+
+    public static final String COMPONENT1 = "Denisa Pîntea 8";
+    public static final String COMPONENT2 = "Denisa Pîntea 7";
+    public static List<String> myComponents = new LinkedList<>(Arrays.asList(GRAPE_NAME));
+
     private static WebDriver driver;
     private boolean successAddGrapes = false;
     private boolean successFerment = false;
-    /*
-        wineComposition = 1 -> wine composition = $GRAPE_NAME
-        wineComposition = 2 -> wine composition = sauvignon blanc, $GRAPE_NAME
-        wineComposition = 3 -> wine composition = sauvignon blanc, godello, $GRAPE_NAME
-     */
-    private final int wineComposition = 3;
 
     @BeforeAll
     public static void before() {
@@ -46,14 +47,13 @@ public class TestSelenium {
         // add grapes
         driver.findElement(By.xpath("//button[contains(text(),'Add grapes')]")).click();
 
-        // Cand sa folosim clear()?
         driver.findElement(By.id("name")).sendKeys(GRAPE_NAME);
 
         Select select = new Select(driver.findElement(By.xpath("//select[@id='quantity']")));
         select.selectByVisibleText("24");
 
-        driver.findElement(By.id("age")).sendKeys("44");
-        driver.findElement(By.id("ripeness")).sendKeys("93");
+        driver.findElement(By.id("age")).sendKeys("37");
+        driver.findElement(By.id("ripeness")).sendKeys("96");
 
         driver.findElement(By.cssSelector("input[type='submit']")).click();
 
@@ -81,31 +81,22 @@ public class TestSelenium {
         table = driver.findElement(By.cssSelector("table.App-table tbody"));
         rows = table.findElements(By.tagName("tr"));
 
-        String composition = "";
+        StringBuilder composition = new StringBuilder();
         for (WebElement row : rows) {
             List<WebElement> td = row.findElements(By.tagName("td"));
 
-            if ((wineComposition == 2 || wineComposition == 3) && td.get(1).getText().equals("sauvignon blanc")) {
+            if (myComponents.contains(td.get(1).getText())) {
                 td.get(0).findElement(By.tagName("input")).click();
                 Assertions.assertTrue(td.get(0).findElement(By.tagName("input")).isSelected(),
-                        "The checkbox for 'sauvignon blanc' is not selected");
-                composition.concat("sauvignon blanc, ");
-            }
-            if (wineComposition == 3 && td.get(1).getText().equals("godello")) {
-                td.get(0).findElement(By.tagName("input")).click();
-                Assertions.assertTrue(td.get(0).findElement(By.tagName("input")).isSelected(),
-                        "The checkbox for 'godello' is not selected");
-                composition.concat("godello, ");
-            }
-
-            if (td.get(1).getText().equals(GRAPE_NAME)) {
-                td.get(0).findElement(By.tagName("input")).click();
-                Assertions.assertTrue(td.get(0).findElement(By.tagName("input")).isSelected(),
-                        "The checkbox for " + GRAPE_NAME + " is not selected");
-                composition.concat(GRAPE_NAME);
-                break;
+                        "The checkbox for " + td.get(1).getText() + " is not selected");
+                composition.append(td.get(1).getText());
+                composition.append(", ");
+                myComponents.remove(td.get(1).getText());
             }
         }
+        composition = new StringBuilder(composition.substring(0, composition.length() - 2));
+
+        Assertions.assertTrue(myComponents.isEmpty(), "Could not find all the required components.");
         driver.findElement(By.tagName("button")).click();
 
         // /wines
@@ -118,7 +109,7 @@ public class TestSelenium {
         for (WebElement row : rows) {
             List<WebElement> td = row.findElements(By.tagName("td"));
 
-            if (td.get(0).getText().equals(GRAPE_NAME)) {
+            if (td.get(0).getText().equals(composition.toString())) {
                 successFerment = true;
                 break;
             }
