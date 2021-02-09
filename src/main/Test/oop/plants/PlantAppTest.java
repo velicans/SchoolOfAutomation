@@ -39,7 +39,7 @@ class PlantAppTest {
     public void checkCedarObjectInstantiation() {
         Assertions.assertAll(
                 () -> assertEquals(200, cedarTree.getOxygenProduction(), "Oxygen production should be 200"),
-                () -> assertEquals(10, cedarTree.getNumberOfSpecies(), "Height should be 10"));
+                () -> assertEquals(10, cedarTree.getNumberOfSpecies(), "Number of Species should be 10"));
     }
 
     @Test
@@ -61,7 +61,7 @@ class PlantAppTest {
     public void checkPinidaeObjectInstantiation() {
         Assertions.assertAll(
                 () -> assertEquals(150, pinidae.getOxygenProduction(), "Oxygen production should be 150"),
-                () -> assertEquals(50, pinidae.getNumberOfSpecies(), "Height should be 50"));
+                () -> assertEquals(50, pinidae.getNumberOfSpecies(), "Number of Species should be 50"));
     }
 
     @Test
