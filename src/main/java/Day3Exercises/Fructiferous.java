@@ -2,8 +2,8 @@ package Day3Exercises;
 
 public interface Fructiferous {
 
-    String color = "";
-
+    //String color = null;
+    String getFruitColor();
     String getTimeToHarvest();
 
 }

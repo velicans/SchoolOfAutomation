@@ -67,7 +67,8 @@ public class TestExercises {
         assertAll("orange",
                 () -> assertEquals("August", orange.getTimeToHarvest(),
                         "Orange - supposed to harvest on August"),
-                () -> assertTrue(orange.isEatable(), "Orange - eatable")
+                () -> assertTrue(orange.isEatable(), "Orange - eatable"),
+                () -> assertEquals("orange", orange.getFruitColor(), "Oranges are orange.")
         );
     }
 

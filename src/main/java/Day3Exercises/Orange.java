@@ -28,6 +28,11 @@ public class Orange extends Plant implements Fructiferous, Eatable {
     }
 
     @Override
+    public String getFruitColor() {
+        return "orange";
+    }
+
+    @Override
     public String getTimeToHarvest() {
         return "August";
     }
@@ -43,6 +48,7 @@ public class Orange extends Plant implements Fructiferous, Eatable {
                 "age=" + age +
                 ", height=" + height +
                 ", isEatable=" + isEatable() +
+                ", fruitColor=" + getFruitColor() +
                 ", timeToHarvest=" + getTimeToHarvest() +
                 ", oxygenProduction=" + getOxygenProduction() +
                 '}';
