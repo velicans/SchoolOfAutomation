@@ -130,7 +130,7 @@ public class TestSelenium {
 
 
    /* @AfterAll
-    public static void after1() {
+    public static void after() {
 */
 
 
