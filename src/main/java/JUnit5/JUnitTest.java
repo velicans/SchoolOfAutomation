@@ -59,9 +59,9 @@ public class JUnitTest {
         int[] array = {1, 2, 3};
 
         Assertions.assertAll(
-                () -> Assertions.assertEquals(0, array[0]),
-                () -> Assertions.assertEquals(2, array[1]),
-                () -> Assertions.assertEquals(3, array[2])
+                () -> Assertions.assertEquals(5, array[0]),
+                () -> Assertions.assertEquals(6, array[1]),
+                () -> Assertions.assertEquals(7, array[2])
         );
 
     }
@@ -80,7 +80,7 @@ public class JUnitTest {
     @ParameterizedTest
     @ValueSource(ints = {1,2,3,4,5})
     public void testParametrizat(int nr) {
-        Assertions.assertEquals(3, nr);
+        Assertions.assertEquals(1, nr);
     }
 
     @Nested
