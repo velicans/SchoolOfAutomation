@@ -1,0 +1,47 @@
+MUST:
+    get:
+        - https://endavawineapp.azurewebsites.net/must
+    delete:
+        - https://endavawineapp.azurewebsites.net/must
+            - body contine id intre paranteze drepte
+                - ex : [5]
+    post:
+        - https://endavawineapp.azurewebsites.net/must/
+        - body contine un obiect:
+            - ex:
+                {
+                    "id": 1,
+                    "name": "new_must",
+                    "volume": {
+                        "value": 100,
+                        "unit": "liters"
+                    },
+                    "type": "sweet"
+                }
+
+
+WINES:
+    patch:
+        - https://endavawineapp.azurewebsites.net/wines/{id}
+            - link parameter id
+            - body: json object
+                {
+                    "name":"test"
+                }
+    get:
+        - https://endavawineapp.azurewebsites.net/wines/
+    post:
+        - https://endavawineapp.azurewebsites.net/wines
+        - body: json object
+                {
+                    "name":"new_wine",
+                    "bottlingVolume":"",
+                    "volume":{
+                      "value":100,
+                      "unit":"liters"
+                    },
+                    "composition":[
+                      "sauvignon blanc"
+                    ],
+                    "type":"dry"
+                }
