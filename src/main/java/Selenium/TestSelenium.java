@@ -18,11 +18,11 @@ import java.util.List;
 
 public class TestSelenium {
 
-    public static final String GRAPE_NAME = "Denisa Pîntea 11";
+    public static final String GRAPE_NAME = "Denisa Pîntea 2";
 
-    public static final String COMPONENT1 = "Denisa Pîntea 8";
+    public static final String COMPONENT1 = "Denisa Pîntea 1";
     public static final String COMPONENT2 = "Denisa Pîntea 7";
-    public static List<String> myComponents = new LinkedList<>(Arrays.asList(GRAPE_NAME));
+    public static List<String> myComponents = new LinkedList<>(Arrays.asList(GRAPE_NAME, COMPONENT1));
 
     private static WebDriver driver;
     private boolean successAddGrapes = false;
