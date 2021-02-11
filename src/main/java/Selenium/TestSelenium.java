@@ -18,11 +18,14 @@ import java.util.List;
 
 public class TestSelenium {
 
-    public static final String GRAPE_NAME = "Denisa Pîntea 2";
+    public static final String GRAPE_NAME = "Denisa Pîntea 3";
+    public static final float GRAPE_QUANTITY = 24;
+    public static final int GRAPE_AGE = 80;
+    public static final float GRAPE_RIPENESS = 94;
 
     public static final String COMPONENT1 = "Denisa Pîntea 1";
     public static final String COMPONENT2 = "Denisa Pîntea 7";
-    public static List<String> myComponents = new LinkedList<>(Arrays.asList(GRAPE_NAME, COMPONENT1));
+    public static List<String> myComponents = new LinkedList<>(Arrays.asList(GRAPE_NAME));
 
     private static WebDriver driver;
     private boolean successAddGrapes = false;
@@ -50,10 +53,10 @@ public class TestSelenium {
         driver.findElement(By.id("name")).sendKeys(GRAPE_NAME);
 
         Select select = new Select(driver.findElement(By.xpath("//select[@id='quantity']")));
-        select.selectByVisibleText("24");
+        select.selectByVisibleText(String.valueOf(GRAPE_QUANTITY));
 
-        driver.findElement(By.id("age")).sendKeys("37");
-        driver.findElement(By.id("ripeness")).sendKeys("96");
+        driver.findElement(By.id("age")).sendKeys(String.valueOf(GRAPE_AGE));
+        driver.findElement(By.id("ripeness")).sendKeys(String.valueOf(GRAPE_RIPENESS));
 
         driver.findElement(By.cssSelector("input[type='submit']")).click();
 
