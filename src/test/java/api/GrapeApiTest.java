@@ -19,7 +19,7 @@ public class GrapeApiTest {
 
     public static final String GRAPE_API_URL = "https://endavawineapp.azurewebsites.net/grapes/";
 
-    public static final String GRAPE_NAME = "sorin13"; // schimba valoarea pentru a avea un nou tip de strugure
+    public static final String GRAPE_NAME = "test1a"; // schimba valoarea pentru a avea un nou tip de strugure
     public static final float GRAPE_QUANTITY = 12;
     public static final int GRAPE_AGE = 5;
     public static final float GRAPE_RIPENESS = 99; // daca valoarea este pe 87.0 o sa avem butonul "pick & crush grapes"
