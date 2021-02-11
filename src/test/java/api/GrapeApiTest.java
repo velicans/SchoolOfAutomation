@@ -11,15 +11,15 @@ import java.util.Map;
 import java.util.logging.Logger;
 
 import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.CoreMatchers.not;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.emptyString;
-import static org.hamcrest.Matchers.not;
 
 public class GrapeApiTest {
 
     public static final String GRAPE_API_URL = "https://endavawineapp.azurewebsites.net/grapes/";
 
-    public static final String GRAPE_NAME = "sorinTest8"; // schimba valoarea pentru a avea un nou tip de strugure
+    public static final String GRAPE_NAME = "sorin13"; // schimba valoarea pentru a avea un nou tip de strugure
     public static final float GRAPE_QUANTITY = 12;
     public static final int GRAPE_AGE = 5;
     public static final float GRAPE_RIPENESS = 99; // daca valoarea este pe 87.0 o sa avem butonul "pick & crush grapes"
@@ -34,16 +34,15 @@ public class GrapeApiTest {
         LOGGER.info("Grape created.");
 
         getGrapes();
-
         String id = getGrapeId(GRAPE_NAME);
         LOGGER.info("Grape id is:" + id);
-        assertThat("", id, is(not(emptyString())));
+        assertThat("id missing.", id, is(not(emptyString())));
 
         deleteGrape(id);
         LOGGER.info("Grape deleted.");
         getGrapes();
 
-        assertThat("", isGrapeAvailable(GRAPE_NAME), is(false));
+        assertThat("grape was not deleted.", isGrapeAvailable(GRAPE_NAME), is(false));
     }
 
 
