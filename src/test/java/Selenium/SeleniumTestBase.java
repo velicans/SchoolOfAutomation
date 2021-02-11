@@ -15,7 +15,6 @@ public class SeleniumTestBase {
 
     protected static WebDriver driver;
 
-
     @BeforeAll
     public static void before() {
 
