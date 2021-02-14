@@ -1,6 +1,4 @@
-package Selenium;
-
-
+package Seleniumm;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.jupiter.api.*;
 import org.openqa.selenium.By;
@@ -36,12 +34,8 @@ public class TestSelenium {
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[contains(text(),'Add grapes')]")));
 
         driver.findElement(By.xpath("//button[contains(text(),'Add grapes')]")).click();
-        // driver.findElement(By.cssSelector("button.animated-button")).click();
-        // driver.findElement(By.linkText("Add grapes")).click();
-
         driver.findElement(By.id("name")).sendKeys(GRAPE_NAME);
 
-        // driver.findElement(By.xpath("//label[contains(text(),'Quantity:')]"))
         Select select = new Select(driver.findElement(By.xpath("//select[@id='quantity']")));
         select.selectByVisibleText("24");
 
@@ -65,41 +59,29 @@ public class TestSelenium {
             }
         }
 
+
+// my code
+
         WebElement lastName = driver.findElement(By.xpath("//tr[last()]/td[1]"));
         System.out.println(lastName.getText());
         Assertions.assertEquals(GRAPE_NAME, lastName.getText(), "check name" );
-
-        try {
-            Thread.sleep(10000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-
-        driver.findElement(By.xpath("//tr[last()]/td[1]/input[1]")).click();
-        driver.findElement(By.xpath("//body/div[@id='root']/div[1]/section[1]/button[1]")).click();
-
-        try {
-            Thread.sleep(5000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        driver.findElement(By.xpath("//tbody/tr[last()]/td[4]/button[1]")).click();
-        WebElement inputName = driver.findElement(By.xpath("//tbody/tr[last()]/td[4]/input[1]"));
-        inputName.sendKeys("De.ala blanao");
-        driver.findElement(By.xpath("//button[contains(text(),'OK')]")).click();
-
-
-        driver.findElement(By.xpath("//tbody/tr[last()]/td[5]/button[1]")).click();
-        WebElement inputBottling = driver.findElement(By.xpath("//tbody/tr[last()]/td[5]/input[1]"));
-        inputBottling.sendKeys("fara fund");
-        driver.findElement(By.xpath("//button[contains(text(),'OK')]")).click();
+        sleep(10);
+        click(By.xpath("//tr[last()]/td[1]/input[1]"));
+        click(By.xpath("//body/div[@id='root']/div[1]/section[1]/button[1]"));
+        sleep(5);
+        click(By.xpath("//tbody/tr[last()]/td[4]/button[1]"));
+        type(By.xpath("//tbody/tr[last()]/td[4]/input[1]"), "De.ala blanao");
+        click(By.xpath("//button[contains(text(),'OK')]"));
+        click(By.xpath("//tbody/tr[last()]/td[5]/button[1]"));
+        type(By.xpath("//tbody/tr[last()]/td[5]/input[1]"), "fara fund");
+        click(By.xpath("//button[contains(text(),'OK')]"));
 
     }
 
     @AfterAll
     public static void after() {
 
-       driver.quit();
+        driver.quit();
 
     }
 
@@ -118,4 +100,22 @@ public class TestSelenium {
         return options;
     }
 
+    public static void sleep(int seconds) {
+
+        try {
+            Thread.sleep(seconds * 1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void click(By by) {
+
+        driver.findElement(by).click();
+    }
+
+    public static void type(By by, String text) {
+
+        driver.findElement(by).sendKeys(text);
+    }
 }
