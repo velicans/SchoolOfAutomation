@@ -7,7 +7,7 @@ import org.openqa.selenium.By;
 
 public class CreateGrapeTest extends SeleniumTestBase {
 
-    public static final String GRAPE_NAME = "sorin7";
+    public static final String GRAPE_NAME = "Denisa1";
 
     GrapesPO grapesPO;
 

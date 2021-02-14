@@ -19,16 +19,19 @@ public class GrapeApiTest {
 
     public static final String GRAPE_API_URL = "https://endavawineapp.azurewebsites.net/grapes/";
 
-    public static final String GRAPE_NAME = "sorin13"; // schimba valoarea pentru a avea un nou tip de strugure
-    public static final float GRAPE_QUANTITY = 12;
-    public static final int GRAPE_AGE = 5;
-    public static final float GRAPE_RIPENESS = 99; // daca valoarea este pe 87.0 o sa avem butonul "pick & crush grapes"
+    public static final String GRAPE_NAME = "Denisa"; // schimba valoarea pentru a avea un nou tip de strugure
+    public static final float GRAPE_QUANTITY = 24;
+    public static final int GRAPE_AGE = 85;
+    public static final float GRAPE_RIPENESS = 94; // daca valoarea este pe 87.0 o sa avem butonul "pick & crush grapes"
     public final Logger LOGGER = Logger.getLogger(getClass().getName());
 
     public Response response;
 
     @Test
     public void testGrapeApi() {
+
+        checkDuplicates();
+        LOGGER.info(GRAPE_NAME + " - Name is unique.");
 
         addGrape(GRAPE_NAME, GRAPE_QUANTITY, GRAPE_AGE, GRAPE_RIPENESS);
         LOGGER.info("Grape created.");
@@ -45,6 +48,11 @@ public class GrapeApiTest {
         assertThat("grape was not deleted.", isGrapeAvailable(GRAPE_NAME), is(false));
     }
 
+    public void checkDuplicates() {
+
+        getGrapes();
+        assertThat(GRAPE_NAME + " - Name already used.", isGrapeAvailable(GRAPE_NAME), is(false));
+    }
 
     public String getGrapeId(String grapeName) {
 
