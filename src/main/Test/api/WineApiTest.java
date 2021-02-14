@@ -34,8 +34,8 @@ public class WineApiTest {
 
     @Test
     public void testWinesApi() {
-//        addWine(WINE_NAME, BOTTLING_VOLUME, WINE_VOLUME, composition, WINE_TYPE);
-//        LOGGER.info("Wine has been created");
+        addWine(WINE_NAME, BOTTLING_VOLUME, WINE_VOLUME, composition, WINE_TYPE);
+        LOGGER.info("Wine has been created");
 
         getWines();
         String id = getWineId(WINE_NAME);
