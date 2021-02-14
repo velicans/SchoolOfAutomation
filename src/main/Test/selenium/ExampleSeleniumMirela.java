@@ -14,7 +14,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.util.List;
 
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
-public class ExampleSelenium {
+public class ExampleSeleniumMirela {
 
     public static final String GRAPE_NAME = "mirela";
     private static WebDriver driver;
