@@ -1,5 +1,6 @@
-package apitests;
+package apitests.must;
 
+import apitests.grape.TestGrapes;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -15,7 +16,7 @@ import static org.hamcrest.MatcherAssert.assertThat;
 public class MustTest {
 
     public static final String MUST_API_URL = "https://endavawineapp.azurewebsites.net/must/";
-    public static final String MUST_NAME = "Alex must test";
+    public static final String MUST_NAME = TestGrapes.GRAPE_NAME;
     public static final float MUST_VALUE = 12;
     public static final String MUST_UNIT = "Litres";
     public static final String MUST_TYPE = "Dry";
