@@ -3,30 +3,26 @@ package Selenium;
 
 import PageObjects.GrapesPO;
 import org.junit.jupiter.api.Test;
-import org.openqa.selenium.By;
+
+import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.MatcherAssert.assertThat;
 
 public class CreateGrapeTest extends SeleniumTestBase {
 
-    public static final String GRAPE_NAME = "Denisa1";
+    public static final String GRAPE_QUANTITY = "24";
+    public static final String GRAPE_AGE = "6";
+    public static final String GRAPE_RIPENESS = "95";
 
     GrapesPO grapesPO;
 
     @Test
     public void grapeTest() {
 
-        waitForElementToBeVisible(By.xpath("//button[contains(text(),'Add grapes')]"));
-
-        click(By.xpath("//button[contains(text(),'Add grapes')]"));
-        type(By.id("name"), GRAPE_NAME);
-        select(By.xpath("//select[@id='quantity']"), "24");
-        type(By.id("age"), "99");
-        type(By.id("ripeness"), "99");
-        click(By.cssSelector("input[type='submit']"));
-
-        waitForElementToBeVisible(By.cssSelector("table.App-table tbody"));
+        addNewGrapes(GRAPE_NAME, GRAPE_QUANTITY, GRAPE_AGE, GRAPE_RIPENESS);
 
         grapesPO = new GrapesPO(driver);
         grapesPO.clickCrush(GRAPE_NAME);
+        assertThat("could not find " + GRAPE_NAME, grapesPO.isSuccessAddGrapes(), is(true));
 
         sleep(3);
     }

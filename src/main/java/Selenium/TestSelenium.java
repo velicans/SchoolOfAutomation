@@ -18,7 +18,7 @@ import java.util.List;
 
 public class TestSelenium {
 
-    public static final String GRAPE_NAME = "Denisa Pîntea 3";
+    public static final String GRAPE_NAME = "Denisa Pîntea";
     public static final float GRAPE_QUANTITY = 24;
     public static final int GRAPE_AGE = 80;
     public static final float GRAPE_RIPENESS = 94;

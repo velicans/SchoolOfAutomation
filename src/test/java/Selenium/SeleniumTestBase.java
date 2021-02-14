@@ -15,6 +15,9 @@ public class SeleniumTestBase {
 
     protected static WebDriver driver;
 
+    public static final String GRAPE_NAME = "Denisa Pîntea 0";
+
+
     @BeforeAll
     public static void before() {
 
@@ -75,6 +78,36 @@ public class SeleniumTestBase {
 
         Select select = new Select(driver.findElement(by));
         select.selectByVisibleText(option);
+    }
+
+    public static void changePageToMust() {
+        waitForElementToBeVisible(By.linkText("Must"));
+        click(By.linkText("Must"));
+    }
+
+    public static void changePageToGrapes() {
+        waitForElementToBeVisible(By.linkText("Grapes"));
+        click(By.linkText("Grapes"));
+    }
+
+    public static void changePageToWines() {
+        waitForElementToBeVisible(By.linkText("Wines"));
+        click(By.linkText("Wines"));
+    }
+
+    public static void addNewGrapes(String name, String quantity, String age, String ripeness) {
+
+        changePageToGrapes();
+        waitForElementToBeVisible(By.xpath("//button[contains(text(),'Add grapes')]"));
+
+        click(By.xpath("//button[contains(text(),'Add grapes')]"));
+        type(By.id("name"), name);
+        select(By.xpath("//select[@id='quantity']"), quantity);
+        type(By.id("age"), age);
+        type(By.id("ripeness"), ripeness);
+        click(By.cssSelector("input[type='submit']"));
+
+        waitForElementToBeVisible(By.cssSelector("table.App-table tbody"));
     }
 
 }
