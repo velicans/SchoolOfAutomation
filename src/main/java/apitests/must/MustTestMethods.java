@@ -23,23 +23,19 @@ public class MustTestMethods {
     public final String MUST_API_URL;
 
 
-    MustTestMethods(String must_name,float must_value, String must_unit, String must_type,String must_url){
-        MUST_NAME=must_name;
-        MUST_VALUE=must_value;
-        MUST_UNIT=must_unit;
-        MUST_TYPE=must_type;
-        MUST_API_URL=must_url;
+    MustTestMethods(String must_name, float must_value, String must_unit, String must_type, String must_url) {
+        MUST_NAME = must_name;
+        MUST_VALUE = must_value;
+        MUST_UNIT = must_unit;
+        MUST_TYPE = must_type;
+        MUST_API_URL = must_url;
 
 
-        response=RestAssured.given()
+        response = RestAssured.given()
                 .contentType(ContentType.JSON)
                 .when()
                 .get(MUST_API_URL);
     }
-
-
-
-
 
 
     public void addMust() {
@@ -71,15 +67,16 @@ public class MustTestMethods {
     }
 
     public String getMustID() {
-        String id=JsonPath.with(response.prettyPrint()).get("find { a -> a.name == '" + MUST_NAME + "'}.id").toString();
+        String id = JsonPath.with(response.prettyPrint()).get("find { a -> a.name == '" + MUST_NAME + "'}.id").toString();
         assertThat(id, is(not(emptyString())));
+        System.out.println("ID is "+id);
         return id;
 
 
     }
 
-    public void getMust(){
-        response=RestAssured.given()
+    public void getMust() {
+        response = RestAssured.given()
                 .contentType(ContentType.JSON)
                 .when()
                 .get(MUST_API_URL);
@@ -88,8 +85,8 @@ public class MustTestMethods {
         assertThat(response.getStatusCode(), is(200));
     }
 
-    public void isMustAvailable(){
-        boolean testCase= JsonPath.with(response.prettyPrint()).get("name").toString().contains(MUST_NAME);
+    public void isMustAvailable() {
+        boolean testCase = JsonPath.with(response.prettyPrint()).get("name").toString().contains(MUST_NAME);
         assertThat(testCase, is(false));
     }
 

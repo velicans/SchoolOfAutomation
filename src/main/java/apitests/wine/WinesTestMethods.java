@@ -28,35 +28,35 @@ public class WinesTestMethods {
 
     final String WINE_API_URL;
 
-    WinesTestMethods(String name, String volume, float value, String unit, List<String> wine_composition, String type,String api_url){
-        WINE_NAME=name;
-        WINE_VOLUME=volume;
-        WINE_VALUE=value;
-        WINE_UNIT=unit;
-        WINE_COMPOSITION=wine_composition;
-        WINE_TYPE=type;
-        WINE_API_URL=api_url;
+    WinesTestMethods(String name, String volume, float value, String unit, List<String> wine_composition, String type, String api_url) {
+        WINE_NAME = name;
+        WINE_VOLUME = volume;
+        WINE_VALUE = value;
+        WINE_UNIT = unit;
+        WINE_COMPOSITION = wine_composition;
+        WINE_TYPE = type;
+        WINE_API_URL = api_url;
 
-        response=RestAssured.given()
+        response = RestAssured.given()
                 .contentType(ContentType.JSON)
                 .when()
                 .get(WINE_API_URL);
     }
 
-    public void addWine(){
+    public void addWine() {
         Map<String, Object> volumeMap = new HashMap<>();
-        volumeMap.put("value",WINE_VALUE);
-        volumeMap.put("unit",WINE_UNIT);
+        volumeMap.put("value", WINE_VALUE);
+        volumeMap.put("unit", WINE_UNIT);
 
 
         Map<String, Object> bodyMap = new HashMap<>();
         bodyMap.put("name", WINE_NAME);
-        bodyMap.put("bottlingVolume",WINE_VOLUME);
-        bodyMap.put("volume",volumeMap);
-        bodyMap.put("composition",WINE_COMPOSITION);
-        bodyMap.put("type",WINE_TYPE);
+        bodyMap.put("bottlingVolume", WINE_VOLUME);
+        bodyMap.put("volume", volumeMap);
+        bodyMap.put("composition", WINE_COMPOSITION);
+        bodyMap.put("type", WINE_TYPE);
 
-        response=RestAssured.given()
+        response = RestAssured.given()
                 .contentType(ContentType.JSON)
                 .body(bodyMap)
                 .when()
@@ -66,48 +66,44 @@ public class WinesTestMethods {
 
     }
 
-    public String getWineID(){
-        String id=JsonPath.with(response.prettyPrint()).get("find { a -> a.name == '" + WINE_NAME + "'}.id").toString();
+    public String getWineID() {
+        String id = JsonPath.with(response.prettyPrint()).get("find { a -> a.name == '" + WINE_NAME + "'}.id").toString();
         assertThat(id, is(not(emptyString())));
         return id;
     }
 
-    public void deleteWine(){
-        response=RestAssured.given()
+    public void deleteWine() {
+        response = RestAssured.given()
                 .contentType(ContentType.JSON)
                 .when()
-                .delete(WINE_API_URL+getWineID());
-
-        assertThat(response.getStatusCode(), is (200));
-    }
-
-    public void getWine(){
-        response=RestAssured.given()
-                .contentType(ContentType.JSON)
-                .when()
-                .get(WINE_API_URL);
-
-        assertThat(response.getStatusCode(), is (200));
-    }
-
-    public void isWineAvailable(){
-        boolean testCase= JsonPath.with(response.prettyPrint()).get("name").toString().contains(WINE_NAME);
-        assertThat(testCase, is(false));
-    }
-
-    public void modifyName(){
-        response=RestAssured.given()
-                .contentType(ContentType.JSON)
-                .param("name",WINE_NAME)
-                .patch(WINE_API_URL+getWineID());
-
+                .delete(WINE_API_URL + getWineID());
 
         assertThat(response.getStatusCode(), is(200));
     }
 
+    public void getWine() {
+        response = RestAssured.given()
+                .contentType(ContentType.JSON)
+                .when()
+                .get(WINE_API_URL);
+
+        assertThat(response.getStatusCode(), is(200));
+    }
+
+    public void isWineAvailable() {
+        boolean testCase = JsonPath.with(response.prettyPrint()).get("name").toString().contains(WINE_NAME);
+        assertThat(testCase, is(false));
+    }
+
+    public void modifyName() {
+        response = RestAssured.given()
+                .contentType(ContentType.JSON)
+                .param("name", WINE_NAME)
+                .patch(WINE_API_URL + getWineID());
 
 
-
+        assertThat(response.getStatusCode(), is(200));
+    }
 
 
 }
