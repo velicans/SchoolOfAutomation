@@ -189,6 +189,7 @@ public void testingStuffInWines(){
         rows = table.findElements(By.tagName("tr"));
 
 
+
         for(WebElement row : rows){
             List<WebElement> td = row.findElements(By.tagName("td"));
             if (td.get(1).getText().equals(GRAPE_NAME)){
