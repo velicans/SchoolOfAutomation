@@ -95,11 +95,24 @@ public class WinesTestMethods {
         assertThat(testCase, is(false));
     }
 
-    public void modifyName() {
+    public void modifyName(String name) {
+
+        Map<String, Object> volumeMap = new HashMap<>();
+        volumeMap.put("value", WINE_VALUE);
+        volumeMap.put("unit", WINE_UNIT);
+
+
+        Map<String, Object> bodyMap = new HashMap<>();
+        bodyMap.put("name", name);
+        bodyMap.put("bottlingVolume", WINE_VOLUME);
+        bodyMap.put("volume", volumeMap);
+        bodyMap.put("composition", WINE_COMPOSITION);
+        bodyMap.put("type", WINE_TYPE);
+
         response = RestAssured.given()
                 .contentType(ContentType.JSON)
-                .param("name", WINE_NAME)
-                .patch(WINE_API_URL + getWineID());
+                .body(bodyMap)
+                .patch(WINE_API_URL + "{"+getWineID()+"}",getWineID());
 
 
         assertThat(response.getStatusCode(), is(200));

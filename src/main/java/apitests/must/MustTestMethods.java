@@ -60,8 +60,9 @@ public class MustTestMethods {
     public void deleteMust() {
         response = RestAssured.given()
                 .contentType(ContentType.JSON)
+                .body("["+getMustID()+"]")
                 .when()
-                .delete(MUST_API_URL + getMustID());
+                .delete(MUST_API_URL);
 
         assertThat(response.getStatusCode(), is(200));
     }
@@ -84,6 +85,8 @@ public class MustTestMethods {
 
         assertThat(response.getStatusCode(), is(200));
     }
+
+
 
     public void isMustAvailable() {
         boolean testCase = JsonPath.with(response.prettyPrint()).get("name").toString().contains(MUST_NAME);

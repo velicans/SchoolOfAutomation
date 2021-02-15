@@ -2,10 +2,7 @@ package apitests.wine;
 
 import apitests.must.MustTest;
 import io.restassured.response.Response;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 
 import java.util.Arrays;
 import java.util.List;
@@ -43,6 +40,7 @@ public class WineTests {
     }
 
     @Test
+    @Disabled
     @DisplayName("testDeleteWine")
     public void testDeleteWine() {
         testMethods.deleteWine();
@@ -53,8 +51,10 @@ public class WineTests {
     @Test
     @DisplayName("testModifyName")
     public void testModifyName() {
-        testMethods.modifyName();
+        testMethods.modifyName("Test changed name");
     }
+
+
 
 
 }
