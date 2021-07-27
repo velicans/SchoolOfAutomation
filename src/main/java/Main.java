@@ -11,7 +11,6 @@ public class Main {
         doDay2Exercises();
 
 
-
         // Day3 Exercises
         doDay3Exercises();
 
