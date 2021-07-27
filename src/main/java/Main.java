@@ -10,6 +10,8 @@ public class Main {
         // Day2 Exercises
         doDay2Exercises();
 
+
+
         // Day3 Exercises
         doDay3Exercises();
 
